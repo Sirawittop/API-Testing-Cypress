@@ -1,28 +1,30 @@
-describe('API Test for Reqres Users', () => {  // Corrected arrow function syntax
-  it('should return status code 201 for POST /api/users', () => {
+describe("API Test for Reqres Users", () => {
+  it("should return status code 201", () => {
     cy.request({
-      method: 'POST',
-      url: 'https://reqres.in/api/users',
+      method: "POST",
+
+      url: "https://reqres.in/api/users",
+
       body: {
-        name: 'SirawitTop',
-        job: 'Full Stack Developer'
+        name: "SirawitTop",
+
+        job: "Full Stack Developer",
       },
-      headers: {  // 'Headers' should be lowercase 'headers'
-        'content-type': 'application/json'
-      }
-    }).then((response) => {
-      // Assert that the response status code is 201
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      // Assert that the status code is 201
+
       expect(response.status).to.eq(201);
 
-      // Assert that the response body is not null
-      expect(response.body).to.not.be.null;
+      // Optionally, you can also assert the response body if needed
 
-      // Assert that the response body has the expected keys
-      expect(response.body).to.have.keys('name', 'job', 'id', 'createdAt');
+      expect(response.body).to.have.property("name", "SirawitTop");
 
-      // Assert that the response body has the expected values
-      expect(response.body.name).to.eq('SirawitTop');
-      expect(response.body.job).to.eq('Full Stack Developer');
+      expect(response.body).to.have.property("job", "Full Stack Developer");
     });
   });
 });

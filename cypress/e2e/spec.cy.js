@@ -17,13 +17,10 @@ describe("API Test for Reqres Users", () => {
     })
     .then((response) => {
       // Assert that the status code is 201
-
       expect(response.status).to.eq(201);
 
       // Optionally, you can also assert the response body if needed
-
       expect(response.body).to.have.property("name", "SirawitTop");
-
       expect(response.body).to.have.property("job", "Full Stack Developer");
     });
   });
